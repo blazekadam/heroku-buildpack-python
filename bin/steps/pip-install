@@ -6,6 +6,9 @@ puts-step "Installing dependencies with pip"
 
 /app/.heroku/python/bin/pip install -r requirements.txt --exists-action=w --src=./.heroku/src --allow-all-external --disable-pip-version-check --no-cache-dir | cleanup | indent
 
+#open cv install
+sudo apt-get install python-opencv
+
 # Smart Requirements handling
 cp requirements.txt .heroku/python/requirements-declared.txt
 /app/.heroku/python/bin/pip freeze > .heroku/python/requirements-installed.txt
