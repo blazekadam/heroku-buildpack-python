@@ -4,10 +4,7 @@ puts-step "Installing dependencies with pip"
 [ ! "$FRESH_PYTHON" ] && bpwatch start pip_install
 [ "$FRESH_PYTHON" ] && bpwatch start pip_install_first
 
-whoami 
-groups
-ls -la /app/.heroku/python/bin/
-
+sudo ls /
 
 /app/.heroku/python/bin/pip install numpy
 /app/.heroku/python/bin/pip install scipy
