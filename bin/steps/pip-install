@@ -4,18 +4,9 @@ puts-step "Installing dependencies with pip"
 [ ! "$FRESH_PYTHON" ] && bpwatch start pip_install
 [ "$FRESH_PYTHON" ] && bpwatch start pip_install_first
 
+/app/.heroku/python/bin/pip install numpy
 /app/.heroku/python/bin/pip install -r requirements.txt --exists-action=w --src=./.heroku/src --allow-all-external --disable-pip-version-check --no-cache-dir | cleanup | indent
 
-#open cv install
-mkdir opencv_src
-cd opencv_src/
-git clone https://github.com/Itseez/opencv.git
-cd opencv/
-mkdir release
-cd release/
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
-make
-make install
 
 # Smart Requirements handling
 cp requirements.txt .heroku/python/requirements-declared.txt
